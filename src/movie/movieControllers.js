@@ -1,3 +1,4 @@
+const res = require("express/lib/response");
 const Movie = require("./movieModel");
 
 exports.addMovie = async (req, res) => {
@@ -28,4 +29,18 @@ exports.deleteMovie = async (req, res) => {
         console.log(error);
         res.status(500).send({ error: error.message });
     }
-}
+};
+
+
+exports.updateMovie = async (req, res) => {
+    try {
+      const newMovie = await Movie.updateOne(
+        { title: req.body.title},
+        { $set: { actors: req.body.actors } }
+      );
+      res.status(200).send({ movie: newMovie });
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ error: error.message });
+    }
+  };

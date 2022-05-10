@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-const { addMovie, listMovies, deleteMovie } = require("./movieControllers");
+const { addMovie, listMovies, deleteMovie, updateMovie } = require("./movieControllers");
 
 const movieRouter = Router();
 
@@ -8,5 +8,6 @@ const movieRouter = Router();
 movieRouter.post("/movie", addMovie);
 movieRouter.get("/movie", listMovies);
 movieRouter.delete("/movie", deleteMovie);
+movieRouter.patch("/movie", updateMovie);
 
 module.exports = movieRouter;
