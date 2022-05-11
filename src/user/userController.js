@@ -14,8 +14,18 @@ exports.addUser = async (req, res) => {
   }
 };
 
+exports.listUsers = async (req, res) => {
+    try {
+        const allUsers = await User.find({});
+        res.status(200).send({ allUsers });
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({ error: error.message })
+    } 
+};
 
 
 
 
 // {"username": "sayam1", "email": "sayam@gmail.com", "pass": "pass1234"} - insomnia (POST)
+// just need to enter the address  and select the GET option: http://localhost:5001/user = this will list all of the users
