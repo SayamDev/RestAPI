@@ -40,8 +40,25 @@ exports.deleteUser = async (req, res) => {
   };
 
 
+  //update user
+  exports.updateUser = async (req, res) => {
+    try {
+      const updUser = await User.updateOne(
+        { username: req.body.username },
+        { $set: { email: req.body.email } }
+      );
+      res.status(200).send({ user: updUser });
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ error: error.message });
+    }
+  };
+  
+
 
 
 
 // {"username": "sayam1", "email": "sayam@gmail.com", "pass": "pass1234"} - insomnia (POST)
 // just need to enter the address  and select the GET option: http://localhost:5001/user = this will list all of the users
+// Select DELETE and enter in JSON = {"username" : "sayam22"} 
+//
