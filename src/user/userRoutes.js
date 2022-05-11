@@ -6,6 +6,6 @@ const userRouter = Router();
 
 // create user endpoint with POST http verb and 
 // run the function once the endpoint is hit.
-userRouter.post("/user", addUser, hashPass);
+userRouter.post("/user",hashPass, addUser, );
 
 module.exports = userRouter;
